@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PLANIT AI | Projet</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/ui.js" defer></script>
+  </head>
+  <body class="bg-slate-50">
+    <header class="flex flex-wrap items-center justify-between bg-sky-100 p-5">
+      <a href="index.html" class="font-bold"
+        ><img
+          src="data/Logo minimaliste PLANIT IA.png"
+          alt="Planit IA"
+          width="120"
+      /></a>
+      <nav class="flex flex-wrap gap-5" aria-label="Navigation principale">
+        <a href="index.html" class="rounded-sm font-bold px-4 py-2"
+          >Dashboard</a
+        >
+        <a href="new-project.html" class="rounded-sm font-bold px-4 py-2"
+          >Nouveau Projet</a
+        >
+        <button
+          id="parametre-ia"
+          type="button"
+          class="rounded-lg bg-blue-600 px-4 py-2 text-white"
+        >
+          Param�tres IA
+        </button>
+      </nav>
+    </header>
+    <main></main>
+    <dialog id="modal" class="m-auto rounded border p-4">
+      <label for="api-key">Cl� API</label>
+      <input id="api-key" type="password" class="my-3 block border p-2" />
+      <button id="save-key" class="rounded bg-blue-600 p-2 text-white">
+        Enregistrer
+      </button>
+      <button id="demo-mode" class="rounded border p-2">Mode d�mo</button>
+      <button id="close-modal" class="rounded border p-2">Fermer</button>
+    </dialog>
+  </body>
+</html>
