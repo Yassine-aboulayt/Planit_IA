@@ -86,5 +86,14 @@ function openTask(task, plan) {
     localStorage.setItem("planit-demo", JSON.stringify(plan));
     location.reload();
   };
+  dialog.querySelector("#delete-task").onclick = function () {
+    if (!confirm("Supprimer cette tache ?")) return;
+    plan.tasks = plan.tasks.filter((t) => t.id !== task.id);
+    plan.tasks.forEach(function (t) {
+      t.dependencies = t.dependencies.filter((id) => id !== task.id);
+    });
+    localStorage.setItem("planit-demo", JSON.stringify(plan));
+    location.reload();
+  };
   dialog.showModal();
 }
