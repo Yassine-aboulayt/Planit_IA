@@ -22,7 +22,18 @@ async function showDemo() {
 
     const title = document.querySelector("#board-title");
     title.textContent = plan.projectName;
+    const total = plan.tasks.length;
+    const done = plan.tasks.filter((t) => t.status === "Done");
+    let percent = 0;
+    if (total > 0) {
+      percent = Math.round((100 * done.length) / total);
+    }
+    document.querySelector("#project-progress").value = percent;
+    const summary = document.querySelector("#project-summary");
+    summary.textContent = `${done.length}/${total} � ${percent}% termin�`;
+    let hours = 0;
     plan.tasks.forEach(function (task) {
+      hours += task.estimatedTime;
       let column = "#todo-list";
       if (task.status === "In Progress") column = "#progress-list";
       if (task.status === "Done") column = "#done-list";
@@ -36,6 +47,7 @@ async function showDemo() {
       }
       board.querySelector(column).append(card);
     });
+    summary.textContent += ` | 7 jours | 1 dev | ${hours} h / 42 h`;
   } catch {
     const error = document.querySelector("#board-error");
     error.textContent = "Impossible de charger la d�mo.";

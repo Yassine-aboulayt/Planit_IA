@@ -35,6 +35,13 @@
     <main class="p-4">
       <h1 id="board-title" class="text-xl font-bold">Projet</h1>
       <p id="board-error" class="text-red-600" role="alert"></p>
+      <p id="project-summary" class="my-3" aria-live="polite"></p>
+      <progress
+        id="project-progress"
+        max="100"
+        value="0"
+        aria-label="Progression"
+      ></progress>
       <div id="kanban" class="mt-4 flex flex-wrap gap-4">
         <section class="min-w-56 flex-1 rounded border p-4">
           <h2 class="font-bold">To Do</h2>
