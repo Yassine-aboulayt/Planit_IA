@@ -97,3 +97,27 @@ function openTask(task, plan) {
   };
   dialog.showModal();
 }
+function showDashboard() {
+  const card = document.querySelector("#projects-list article");
+  if (!card) return;
+  const plan = JSON.parse(localStorage.getItem("planit-demo"));
+  if (!plan || !Array.isArray(plan.tasks)) {
+    card.remove();
+    const empty = document.querySelector("#empty-state");
+    empty.classList.remove("hidden");
+    return;
+  }
+  card.querySelector("h2").textContent = plan.projectName;
+  card.querySelector("a").href = "project.html?demo=1";
+  const total = plan.tasks.length;
+  const done = plan.tasks.filter((t) => t.status === "Done").length;
+  const percent = Math.round((100 * done) / (total || 1));
+  const labels = card.querySelectorAll("p");
+  labels[0].textContent = "Plan charg� depuis sample-plan.json";
+  labels[1].textContent = `${total} t�ches � ${done} termin�es � ${total - done} restantes`;
+  labels[2].textContent = `${percent}% d'avancement`;
+  card.querySelector("button").disabled = true;
+  const bar = card.querySelector("div > div");
+  bar.style.width = `${percent}%`;
+}
+showDashboard();

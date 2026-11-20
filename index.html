@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PLANIT | IA</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="/js/main.js" defer></script>
-    <script src="/js/ui.js" defer></script>
-    <link rel="stylesheet" href="/css/style.css" />
+    <script src="js/main.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header
@@ -15,7 +15,7 @@
       class="bg-sky-100 flex flex-wrap p-5 items-center justify-between"
     >
       <img
-        src="/data/Logo minimaliste PLANIT IA.png"
+        src="data/Logo minimaliste PLANIT IA.png"
         alt="Logo Planit IA"
         width="120px"
       />
@@ -33,7 +33,7 @@
               type="button"
               class="rounded-lg bg-blue-600 px-4 py-2 text-white"
             >
-              Paramètres IA
+              Param�tres IA
             </button>
           </li>
         </ul>
@@ -42,15 +42,16 @@
     <main>
       <section class="p-5">
         <h1 class="mb-4 text-xl font-bold">Mes projets</h1>
+
         <div id="projects-list" class="flex flex-wrap gap-4">
           <article class="w-full rounded border p-4 md:w-[31%]">
             <h2 class="text-xl font-bold">PLANIT AI</h2>
             <p class="my-3">Application de gestion de projets.</p>
-            <p>7 tâches · 1 terminée · 6 restantes</p>
+            <p>7 t�ches � 1 termin�e � 6 restantes</p>
             <div class="my-2 h-2 rounded bg-gray-200">
               <div class="h-full w-[14%] rounded bg-blue-600"></div>
             </div>
-            <p>14% d’avancement</p>
+            <p>14% d'avancement</p>
             <div class="mt-3 flex gap-2">
               <a
                 href="project.html?id=1"
@@ -64,12 +65,12 @@
           </article>
         </div>
         <p id="empty-state" class="hidden">
-          Aucun projet pour le moment, créez-en un pour générer votre premier
+          Aucun projet pour le moment, cr�ez-en un pour g�n�rer votre premier
           plan.
         </p>
       </section>
       <dialog id="modal" class="m-auto rounded border p-4">
-        <label for="api-key">Clé API</label>
+        <label for="api-key">Cl� API</label>
 
         <input id="api-key" type="password" class="my-3 block border p-2" />
         <button
@@ -80,7 +81,7 @@
           Enregistrer
         </button>
         <button id="demo-mode" type="button" class="border p-2">
-          Mode démo
+          Mode d�mo
         </button>
         <button id="close-modal" type="button" class="border p-2">
           Fermer
