@@ -57,6 +57,34 @@
         </section>
       </div>
     </main>
+    <dialog id="task-dialog" class="m-auto rounded border p-4">
+      <h2 class="text-xl font-bold">D�tail de la t�che</h2>
+      <label for="task-details">Description</label>
+      <textarea
+        id="task-details"
+        rows="3"
+        class="w-full rounded border p-2"
+      ></textarea>
+      <form id="task-form" class="flex flex-col gap-2">
+        <label for="task-title">Titre</label>
+        <input
+          id="task-title"
+          name="title"
+          required
+          class="rounded border p-2"
+        />
+        <label for="task-status">Statut</label>
+        <select id="task-status" name="status" class="rounded border p-2">
+          <option>To Do</option>
+          <option>In Progress</option>
+          <option>Done</option>
+        </select>
+        <button class="rounded bg-blue-600 p-2 text-white">Enregistrer</button>
+      </form>
+      <form method="dialog">
+        <button class="mt-3 rounded border p-2">Fermer</button>
+      </form>
+    </dialog>
     <dialog id="modal" class="m-auto rounded border p-4">
       <label for="api-key">Cl� API</label>
       <input id="api-key" type="password" class="my-3 block border p-2" />

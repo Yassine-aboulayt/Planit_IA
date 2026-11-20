@@ -45,6 +45,9 @@ async function showDemo() {
       if (task.dependencies.length > 0) {
         card.textContent += "\nDependances : " + task.dependencies.join(", ");
       }
+      card.addEventListener("click", function () {
+        openTask(task, plan);
+      });
       board.querySelector(column).append(card);
     });
     summary.textContent += ` | 7 jours | 1 dev | ${hours} h / 42 h`;
@@ -55,3 +58,33 @@ async function showDemo() {
 }
 
 if (board && location.search === "?demo=1") showDemo();
+
+function openTask(task, plan) {
+  const dialog = document.querySelector("#task-dialog");
+  const details = dialog.querySelector("#task-details");
+  details.value = task.description;
+  dialog.querySelector("h2").textContent = task.title;
+  const edit = dialog.querySelector("#task-form");
+  const title = edit.elements.title;
+  const status = edit.elements.status;
+  title.value = task.title;
+  status.value = task.status;
+  edit.onsubmit = function (event) {
+    event.preventDefault();
+    if (!title.value.trim()) return;
+    const blocked = task.dependencies.some(function (id) {
+      const need = plan.tasks.find((t) => t.id === id);
+      return !need || need.status !== "Done";
+    });
+    if (status.value === "Done" && blocked) {
+      alert("Terminez les t�ches pr�alables.");
+      return;
+    }
+    task.description = details.value.trim();
+    task.title = title.value.trim();
+    task.status = status.value;
+    localStorage.setItem("planit-demo", JSON.stringify(plan));
+    location.reload();
+  };
+  dialog.showModal();
+}
