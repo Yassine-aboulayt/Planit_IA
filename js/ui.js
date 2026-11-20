@@ -116,8 +116,12 @@ function showDashboard() {
   labels[0].textContent = "Plan charg� depuis sample-plan.json";
   labels[1].textContent = `${total} t�ches � ${done} termin�es � ${total - done} restantes`;
   labels[2].textContent = `${percent}% d'avancement`;
-  card.querySelector("button").disabled = true;
   const bar = card.querySelector("div > div");
   bar.style.width = `${percent}%`;
+  card.querySelector("button").onclick = function () {
+    if (!confirm("Supprimer ce projet ?")) return;
+    localStorage.removeItem("planit-demo");
+    showDashboard();
+  };
 }
 showDashboard();
