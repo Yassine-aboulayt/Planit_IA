@@ -30,7 +30,7 @@ async function showDemo() {
     }
     document.querySelector("#project-progress").value = percent;
     const summary = document.querySelector("#project-summary");
-    summary.textContent = `${done.length}/${total} � ${percent}% termin�`;
+    summary.textContent = `${done.length}/${total} · ${percent}% terminé`;
     let hours = 0;
     plan.tasks.forEach(function (task) {
       hours += task.estimatedTime;
@@ -40,7 +40,7 @@ async function showDemo() {
       const card = document.createElement("button");
       card.className =
         "mt-2 rounded bg-white border p-2 text-left whitespace-pre-line";
-      card.textContent = task.id + " � " + task.title;
+      card.textContent = task.id + " · " + task.title;
       card.textContent += `\n${task.priority} / ${task.size} / ${task.estimatedTime} h / ${task.deadline}`;
       if (task.dependencies.length > 0) {
         card.textContent += "\nDependances : " + task.dependencies.join(", ");
@@ -53,7 +53,7 @@ async function showDemo() {
     summary.textContent += ` | 7 jours | 1 dev | ${hours} h / 42 h`;
   } catch {
     const error = document.querySelector("#board-error");
-    error.textContent = "Impossible de charger la d�mo.";
+    error.textContent = "Impossible de charger la démo.";
   }
 }
 
@@ -77,7 +77,7 @@ function openTask(task, plan) {
       return !need || need.status !== "Done";
     });
     if (status.value === "Done" && blocked) {
-      alert("Terminez les t�ches pr�alables.");
+      alert("Terminez les tâches préalables.");
       return;
     }
     task.description = details.value.trim();
@@ -113,8 +113,8 @@ function showDashboard() {
   const done = plan.tasks.filter((t) => t.status === "Done").length;
   const percent = Math.round((100 * done) / (total || 1));
   const labels = card.querySelectorAll("p");
-  labels[0].textContent = "Plan charg� depuis sample-plan.json";
-  labels[1].textContent = `${total} t�ches � ${done} termin�es � ${total - done} restantes`;
+  labels[0].textContent = "Plan chargé depuis sample-plan.json";
+  labels[1].textContent = `${total} tâches · ${done} terminées · ${total - done} restantes`;
   labels[2].textContent = `${percent}% d'avancement`;
   const bar = card.querySelector("div > div");
   bar.style.width = `${percent}%`;
